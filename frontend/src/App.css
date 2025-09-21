@@ -1,0 +1,11 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+.ProseMirror {
+  min-height: 400px;  
+  max-height: 80vh;
+  overflow-y: auto;
+  outline: none;
+  padding: 0.5rem;
+}
