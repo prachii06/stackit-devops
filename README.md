@@ -13,7 +13,7 @@ StackIT is a lightweight and collaborative question-and-answer platform, designe
 - Real-time Notification System (via Socket.io or alternatives)  
 - Rich Text Support with Editor.js  
 
-> Pagination and additional enhancements are planned post MVP.
+> additional enhancements are planned post MVP.
 
 ---
 
