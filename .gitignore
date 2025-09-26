@@ -6,14 +6,15 @@
 /frontend/dist/
 
 # Secrets & Environment Files (CRITICAL)
-/backend/.env
-/frontend/.env.local
+**/.env
+**/.env.local
+**/.env.*.local
 
 # Terraform State & Plugins (CRITICAL)
-# This is the corrected line for your structure
-/backend/terraform/.terraform/
-/backend/terraform/*.tfstate
-/backend/terraform/*.tfstate.backup
+# This rule is now simpler because terraform is a top-level folder
+/terraform/.terraform/
+/terraform/*.tfstate
+/terraform/*.tfstate.backup
 
 # Prisma local DB files & Generated Client
 /backend/prisma/dev.db
