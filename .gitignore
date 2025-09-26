@@ -1,0 +1,32 @@
+# General Dependencies
+# Ignore node_modules in ANY subfolder
+**/node_modules
+
+# Build Output
+/frontend/dist/
+
+# Secrets & Environment Files (CRITICAL)
+/backend/.env
+/frontend/.env.local
+
+# Terraform State & Plugins (CRITICAL)
+# This is the corrected line for your structure
+/backend/terraform/.terraform/
+/backend/terraform/*.tfstate
+/backend/terraform/*.tfstate.backup
+
+# Prisma local DB files & Generated Client
+/backend/prisma/dev.db
+/backend/prisma/dev.db-journal
+/backend/src/generated/prisma
+
+# OS & IDE Junk Files
+.vscode/
+.idea/
+.DS_Store
+Thumbs.db
+
+# Logs
+logs/
+*.log
+npm-debug.log*
