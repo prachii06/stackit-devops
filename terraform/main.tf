@@ -1,5 +1,5 @@
 resource "aws_s3_bucket" "frontend_bucket" {
-    bucket = "stackit-frontend"
+    bucket = "var.bucket_name"
 
     tags = {
         Name = "StackIt Frontend"
