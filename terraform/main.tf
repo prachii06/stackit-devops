@@ -8,7 +8,7 @@ resource "aws_s3_bucket" "frontend_bucket" {
 }
 
 resource "aws_ecr_repository" "backend_repo"{
-    name = "stackit-backend-repo"
+    name = var.ecr_repo_name
 
     tags = {
         Name = "StackIt Backend Repo"
