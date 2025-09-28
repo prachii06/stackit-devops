@@ -3,3 +3,9 @@ variable "bucket_name" {
   type        = string
   default     = "stackit-frontend"
 }
+
+variable "ecr_repo_name" {
+  description = "the name for ecr repository"
+   type       = string
+   default    = "stackit-backend-repo"
+}
