@@ -14,5 +14,6 @@ resource "aws_ecr_repository" "backend_repo"{
         Name = "StackIt Backend Repo"
         Project = "StackIt"
     }
-}
+} 
 
+ 
