@@ -2,21 +2,34 @@
 resource "aws_vpc" "main" {
   cidr_block = "10.0.0.0/16"
   tags = {
-    Name = "StackIT-VPC"
+    Name = "StackIt-VPC"
   }
 }
 
 #public subnet in vpc with 24 bit mask for servers,etc like internet-faciing things so that the user can make api calls to ec2
+#1st public subnet in az-a
 resource "aws_subnet" "public" {
   vpc_id                  = aws_vpc.main.id
-  cidr_block              = "10.0.1.0/24"       
-  map_public_ip_on_launch = true             #to assign public ip to instances launched in this subnet
+  cidr_block              = "10.0.1.0/24"
+  availability_zone       = "ap-south-1a" 
+  map_public_ip_on_launch = true 
   tags = {
-    Name = "StackIt-Public-Subnet"
+    Name = "StackIt-Public-Subnet-A" 
   }
 }
 
-#connects our vpc to the internet
+#2nd public subnet in az- b
+resource "aws_subnet" "public_b" {
+  vpc_id                  = aws_vpc.main.id
+  cidr_block              = "10.0.2.0/24"   #diff address range
+  availability_zone       = "ap-south-1b"  
+  map_public_ip_on_launch = true
+  tags = {
+    Name = "StackIt-Public-Subnet-B"
+  }
+}
+
+#connects our vpc to  internet
 resource "aws_internet_gateway" "gw" {
   vpc_id = aws_vpc.main.id
   tags   = {

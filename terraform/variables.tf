@@ -9,3 +9,15 @@ variable "ecr_repo_name" {
    type       = string
    default    = "stackit-backend-repo"
 }
+
+variable "db_username" {
+  description = "Username for the RDS database."
+  type        = string
+  default     = "stackit_admin"
+}
+
+variable "db_password" {
+  description = "Password for the RDS database."
+  type        = string
+  sensitive   = true #to hide password in output
+}
