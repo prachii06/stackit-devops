@@ -15,6 +15,7 @@
 /terraform/.terraform/
 /terraform/*.tfstate
 /terraform/*.tfstate.backup
+*.tfvars
 
 # Prisma local DB files & Generated Client
 /backend/prisma/dev.db
