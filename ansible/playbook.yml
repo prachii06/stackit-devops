@@ -1,0 +1,30 @@
+---
+- name: configure stackit server
+  hosts: servers
+  become: yes
+  vars:
+    ansible_user: ec2_user
+    ansible_ssh_private_key_file: ~/.ssh/stackit-key
+
+  tasks:
+    - name: update system packages
+      ansible.builtin.yum:
+        name: "*"
+        state: latest
+
+    - name: install Docker
+      ansible.builtin.yum:
+        name: docker
+        state: present
+
+    - name: start docker service
+      ansible.builtin.service:
+        name: docker
+        state: started
+        enabled: yes
+
+    - name: add ec2-user to the docker group
+      ansible.builtin.user:
+        name: ec2-user
+        groups: docker
+        append: yes
