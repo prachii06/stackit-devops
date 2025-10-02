@@ -33,6 +33,12 @@ resource "aws_security_group" "ec2_sg" {
     }
 }
 
+#keypair
+resource "aws_key_pair" "stackit_key" {
+  key_name   = "stackit-key"
+  public_key = file("~/.ssh/stackit-key.pub")
+}
+
 #ec2instance
 resource "aws_instance" "stackit_server"{
     ami = "ami-0f918f7e67a3323f0"
