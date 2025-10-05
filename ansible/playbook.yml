@@ -22,6 +22,6 @@
 
     - name: add ec2-user to the docker group
       ansible.builtin.user:
-        name: ec2-user
+        name: "{{ ansible_user }}"
         groups: docker
         append: yes
