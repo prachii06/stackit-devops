@@ -26,3 +26,44 @@
         name: "{{ ansible_user }}"
         groups: docker
         append: yes
+
+
+#Here is the corrected `playbook.yml` file.
+
+It has been updated to use the `apt` module, which is correct for the Ubuntu server you are using.
+
+```yaml
+---
+- name: configure stackit server
+  hosts: servers
+  become: yes
+
+  tasks:
+    - name: update system packages
+      ansible.builtin.apt:
+        update_cache: yes
+        upgrade: dist
+
+    - name: install Docker
+      ansible.builtin.apt:
+        name: docker.io
+        state: present
+        update_cache: yes
+
+    - name: start docker service
+      ansible.builtin.service:
+        name: docker
+        state: started
+        enabled: yes
+
+    - name: add ec2-user to the docker group
+      ansible.builtin.user:
+        name: "{{ ansible_user }}"
+        groups: docker
+        append: yes
+```
+
+-----
+
+#the playbook was failing initially because it used the 'yum' module on an apt-based EC2 instance.
+#so i replaced  yum tasks with the equivalent 'apt' tasks to correctly update packages and install docker.io(on ubuntu the docker package is named docker.io)
