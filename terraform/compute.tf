@@ -74,3 +74,4 @@ resource "aws_security_group_rule" "db_allow_rule" {
 
 
 #use ssh -i ~/.ssh/stackit-key ubuntu@<elastic-ip> to connect to server as we are using ubuntu ami
+#if using amazon linux ami use ec2-user instead of ubuntu in above commmand
