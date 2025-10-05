@@ -5,14 +5,15 @@
 
   tasks:
     - name: update system packages
-      ansible.builtin.yum:
-        name: "*"
-        state: latest
+      ansible.builtin.apt:
+        update_cache: yes
+        upgrade: dist
 
     - name: install Docker
-      ansible.builtin.yum:
-        name: docker
+      ansible.builtin.apt:
+        name: docker.io
         state: present
+        update_cache: yes
 
     - name: start docker service
       ansible.builtin.service:
