@@ -8,7 +8,7 @@ resource "aws_security_group" "ec2_sg" {
         from_port = 22
         to_port = 22
         protocol = "tcp"
-        cidr_blocks = ["117.222.134.164/32"]
+        cidr_blocks = ["59.184.96.170/32"]
 
     }
 
@@ -36,7 +36,7 @@ resource "aws_security_group" "ec2_sg" {
 #keypair
 resource "aws_key_pair" "stackit_key" {
   key_name   = "stackit-key"
-  public_key = file("/mnt/c/Users/Lenovo/.ssh/stackit-key.pub")
+  public_key = file("~/.ssh/stackit-key.pub")
 
 }
 
@@ -71,3 +71,6 @@ resource "aws_security_group_rule" "db_allow_rule" {
 }
 
 
+
+
+#use ssh -i ~/.ssh/stackit-key ubuntu@<elastic-ip> to connect to server as we are using ubuntu ami
