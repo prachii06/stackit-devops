@@ -1,3 +1,8 @@
+#find official list of cloudfront ips
+data "aws_ec2_managed_prefix_list" "cloudfront" {
+  name = "com.amazonaws.global.cloudfront.origin-facing"
+}
+
 #server firewall
 resource "aws_security_group" "ec2_sg" {
     name = "stackit-ec2-sg"
@@ -17,7 +22,7 @@ resource "aws_security_group" "ec2_sg" {
         from_port = 8000
         to_port = 8000
         protocol = "tcp"
-        cidr_blocks = ["0.0.0.0/0"]
+        cidr_blocks = [data.aws_ec2_managed_prefix_list.cloudfront.id]
     }
 
     #to allow all ooutbound traffic so that server can download required things
