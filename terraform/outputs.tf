@@ -1,4 +1,4 @@
-output "s3_bucket_id" {
-  description = "The final name of the created S3 bucket."
-  value       = aws_s3_bucket.frontend_bucket.id
+output "website_url" {
+  description = "The final URL of the CloudFront distribution for the application."
+  value       = "https://${aws_cloudfront_distribution.main_distribution.domain_name}"
 }
